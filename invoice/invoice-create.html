@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý dịch vụ</title>
+    <title>Hóa đơn thanh toán</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -11,7 +11,7 @@
 <body>
 
     <!-- Start Sidebar -->
-    <div class="d-none d-md-flex flex-column top-0 vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
+    <div class="d-none d-md-flex top-0 flex-column vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
         <a href="/" class="d-flex align-items-center text-light mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="../assets/logo.png" alt="Bootstrap" class="bg-white rounded-pill" width="40" height="40">
             <span class="fs-4 ms-3">Quản lý NCC</span>
@@ -19,31 +19,31 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto ">
             <li class="nav-item mb-2">
-                <a href="index.html" class="nav-link text-light" aria-current="page">
+                <a href="/index.html" class="nav-link text-light" aria-current="page">
                     <i class="fa-solid fa-chart-simple" width="24"></i>
                     Thống kê
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="provider.html" class="nav-link text-light ">
+                <a href="/provider/provider.html" class="nav-link text-light">
                     <i class="fa-solid fa-truck" width="24"></i>
                     Nhà cung cấp
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="service.html" class="nav-link text-light active" aria-current="page">
+                <a href="/service/service.html" class="nav-link text-light" aria-current="page">
                     <i class="fa-solid fa-list" width="24"></i>
                     Dịch vụ
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="invoice.html" class="nav-link text-light">
+                <a href="/invoice/invoice.html" class="nav-link text-light active">
                     <i class="fa-solid fa-file" width="24"></i>
                     Hóa đơn dịch vụ
                 </a>
             </li>
         </ul>
-    </div>
+      </div>
     <!-- End Sidebar -->
 
     <!-- Start NavBar -->
@@ -84,7 +84,7 @@
                         </a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
+                <form class="d-flex mb-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Tên nhà cung cấp">
                     <button class="btn bg-color-1 text-white flex-shrink-0" type="submit">Tìm kiếm</button>
                 </form>
@@ -93,7 +93,7 @@
 
         <!-- Show when large -->
         <div class="d-none d-md-flex py-2 align-items-center w-100" style="padding-left: 280px;">
-            <h3 class="color-2 ps-3 mb-0">Dịch vụ</h3>
+            <h3 class="color-2 ps-3 mb-0">Hóa đơn dịch vụ</h3>
             <div class="flex-fill"></div>
 
             <!-- Avatar -->
@@ -116,102 +116,92 @@
     </nav>
     <!-- End NavBar -->
     
-    <!-- Start Content -->
+    <!-- Start List Service -->
     <div class="content p-3" style="margin-top: 50px; margin-left: 280px;">
-        
-        <h4>Thông tin chi tiết về dịch vụ</h4>
-        
-        <div class="d-flex mb-2">
-            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+        <h4>Thêm hóa đơn thanh toán</h4>
+
+        <div class="d-flex mb-3">
+            <a href="invoice.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
                 <i class="fa-solid fa-arrow-left me-1"></i>
                 Quay lại
             </a>
-            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
-                <i class="fa-solid fa-trash me-1"></i>
-                Xóa dịch vụ
-            </a>
-            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
-                <i class="fa-solid fa-eye me-1"></i>
-                Xem nhà cung cấp
-            </a>
-            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
-                <i class="fa-solid fa-eye me-1"></i>
-                Xem lịch sử thanh toán
-            </a>
-            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
-                <i class="fa-solid fa-chart-simple me-1"></i>
-                Thống kê dịch vụ
-            </a>
         </div>
 
-        <div class="card card-body">
-            <h5 class="text-center mb-3 fw-bold">Thông tin cơ bản</h5>
-
-            <form action="" method="post">
-                <div class="row g-3">
-
-                    <div class="col-md-4">
-                        <div class="d-flex mb-2">
-                            <div>Mã dịch vụ</div>
-                            <div class="flex-fill"></div>
-                            <b>SE123456</b>
-                            <i class="fa-regular fa-copy ms-1 border-color-2"></i>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <div>Tạo mới</div>
-                            <div class="flex-fill"></div>
-                            <b>19:02:36 29/12/2004</b>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <div>Cập nhật</div>
-                            <div class="flex-fill"></div>
-                            <b>19:02:36 29/12/2004</b>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <div>Trạng thái</div>
-                            <div class="flex-fill"></div>
-                            <b class="border-color-1 px-2 rounded-1 color-2">
-                                <i class="fa-solid fa-bolt"></i>
-                                Đang hoạt động
-                            </b>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <div>Nhà cung cấp</div>
-                            <div class="flex-fill"></div>
-                            <b>Công ty điện lực Hà Nội</b>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <div>Mã nhà cung cấp</div>
-                            <div class="flex-fill"></div>
-                            <b>PR123456</b>
-                        </div>
-                    </div>
-
-                    <!-- Name -->
-                    <div class="col-md-8">
-                        <label for="inpName" class="mb-1">Tên</label>
-                        <input id="inpName" value="Dịch vụ điện tổng hợp" type="text" class="form-control" placeholder="Nhập tên của dịch vụ">
-                        <label for="inpDesc" class="mb-1">Mô tả</label>
-                        <textarea id="inpDesc" class="form-control text-start" placeholder="Nhập tên của dịch vụ">Cung cấp nguồn điện cho các tòa nhà cao tầng</textarea>
-                        <div class="d-flex justify-content-center mt-3">
-                            <a class="btn bg-color-1 text-white flex-shrink-0" type="submit">
-                                <i class="fa-solid fa-floppy-disk me-1"></i>
-                                Lưu thay đổi
-                            </a>
-                        </div>
-                    </div>
-
+        <div class="card card-body px-3 shadow-sm">
+            <h5 class="text-center mb-3 fw-bold">Hóa đơn dịch vụ</h5>
+            <div class="row g-3">
+                <div class="col-6">
+                    <!-- Created Date -->
+                    <label class="mb-1">Ngày tạo</label>
+                    <input type="date" class="form-control">
+                    <!-- Expire Date -->
+                    <label class="mb-1 mt-2">Hạn thanh toán</label>
+                    <input type="date" class="form-control">
+                    <!-- Buy -->
+                    <label class="mb-1 mt-2">Bên mua</label>
+                    <input type="text" class="form-control" value="Trường Đại học Thành Hải" disabled>
+                    <!-- Sell -->
+                    <label class="mb-1 mt-2">Bên bán</label>
+                    <input type="text" class="form-control" value="Công ty TNHH Văn Lang" disabled>
+                    <!-- Service Type -->
+                    <label class="mb-1 mt-2">Loại dịch vụ</label>
+                    <input type="text" class="form-control" value="Dịch vụ điện nước" disabled>
+                    <!-- Service Type -->
+                    <label class="mb-1 mt-2">Hợp đồng tham chiếu</label>
+                    <input type="text" class="form-control" value="#CON123456" disabled>
                     
                 </div>
+                <div class="col-6">
+                    <!-- Quantity -->
+                    <label class="mb-1">Số lượng</label>
+                    <div class="d-flex align-items-center">
+                        <input id="quantityInp" type="number" class="form-control me-2" onchange="updateAmount()">
+                        <span class="flex-shrink-0 fst-italic me-2">kwh (Số điện) x 32.000</span>
+                    </div>
+                    <!-- Total Price -->
+                    <label class="mb-1 mt-2">Tổng chi phí</label>
+                    <input id="totalPriceInp" type="text" class="form-control" value="" disabled>
+                    <!-- VAT -->
+                    <label class="mb-1 mt-2">VAT (10%)</label>
+                    <input id="vatInp" type="text" class="form-control" value="" disabled>
+                    <!-- Total Amount -->
+                    <label class="mb-1 mt-2">Tổng thanh toán</label>
+                    <input id="totalAmountInp" type="text" class="form-control" value="" disabled>
+                    <!-- Price Currency -->
+                    <label class="mb-1 mt-2">Đơn vị tiền</label>
+                    <input type="text" class="form-control" value="VNĐ" disabled>
 
-
-            </form>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <a class="btn bg-color-1 text-white flex-shrink-0" type="submit">
+                    <i class="fa-solid fa-floppy-disk me-1"></i>
+                    Thêm mới
+                </a>
+            </div>
         </div>
     </div>
-    <!-- End Content -->
+    <!-- End List Service -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
+    <script>
+        const price = 32000;
+
+        const updateAmount = () => {
+            console.log($('#quantityInp'));
+            
+            const quantity = Number($('#quantityInp').val());
+            const totalPrice = quantity * price;
+            const vat = 0.1 * totalPrice;
+            const totalAmount = totalPrice + vat;
+            $('#totalPriceInp').val(`${totalPrice.toLocaleString('vn')}`);
+            $('#vatInp').val(`${vat.toLocaleString('vn')}`);
+            $('#totalAmountInp').val(`${totalAmount.toLocaleString('vn')}`);
+        }
+
+    </script>
 </body>
 </html>

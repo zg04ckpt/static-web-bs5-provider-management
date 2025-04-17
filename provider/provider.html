@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhà cung cấp</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Start Sidebar -->
+    <div class="d-none d-md-flex flex-column top-0 vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
+        <a href="/" class="d-flex align-items-center text-light mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="../assets/logo.png" alt="Bootstrap" class="bg-white rounded-pill" width="40" height="40">
+            <span class="fs-4 ms-3">Quản lý NCC</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto ">
+            <li class="nav-item mb-2">
+                <a href="/index.html" class="nav-link text-light" aria-current="page">
+                    <i class="fa-solid fa-chart-simple" width="24"></i>
+                    Thống kê
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/provider/provider.html" class="nav-link text-light active">
+                    <i class="fa-solid fa-truck" width="24"></i>
+                    Nhà cung cấp
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/service/service.html" class="nav-link text-light" aria-current="page">
+                    <i class="fa-solid fa-list" width="24"></i>
+                    Dịch vụ
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/invoice/invoice.html" class="nav-link text-light">
+                    <i class="fa-solid fa-file" width="24"></i>
+                    Hóa đơn dịch vụ
+                </a>
+            </li>
+        </ul>
+      </div>
+    <!-- End Sidebar -->
+
+    <!-- Start NavBar -->
+    <nav class="navbar shadow-sm py-0 fixed-top navbar-expand-lg bg-body-tertiary" style="z-index: 99; ">
+        <!-- Show when small -->
+        <div class="d-md-none container-fluid bg-white">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/logo.png" alt="Bootstrap" width="30" height="30">
+                Quản lý NCC
+            </a>
+            <button class="navbar-toggler m-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mb-2">
+                        <a href="index.html" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-chart-simple" width="24"></i>
+                            Thống kê
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="provider.html" class="nav-link">
+                            <i class="fa-solid fa-truck" width="24"></i>
+                            Nhà cung cấp
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="service.html" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-list" width="24"></i>
+                            Dịch vụ
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="invoice.html" class="nav-link">
+                            <i class="fa-solid fa-file" width="24"></i>
+                            Hóa đơn dịch vụ
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Tên nhà cung cấp">
+                    <button class="btn bg-color-1 text-white flex-shrink-0" type="submit">Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Show when large -->
+        <div class="d-none d-md-flex py-2 align-items-center w-100" style="padding-left: 280px;">
+            <h3 class="color-2 ps-3 mb-0">Nhà cung cấp dịch vụ</h3>
+            <div class="flex-fill"></div>
+
+            <!-- Avatar -->
+            <div class="dropdown me-3">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown">
+                    <img src="../assets/manager.png" alt="" width="32" height="32" class="me-2 rounded-circle border-color-1 me-2">
+                    <strong class="color-1">manager</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>  
+
+        <!-- Loading -->
+        <div class="position-absolute top-100 start-0 w-100 loading">
+            <div class="item"></div>
+        </div>
+    </nav>
+    <!-- End NavBar -->
+    
+    <!-- Start List Provider -->
+    <div class="content p-3" style="margin-top: 50px; margin-left: 280px;">
+        <div class="d-flex mb-3">
+            <a href="provider.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-arrow-left me-1"></i>
+                Quay lại
+            </a>
+
+            <a href="provider-create.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-plus me-1"></i>
+                Thêm nhà cung cấp
+            </a>
+        </div>
+        
+        <!-- Searching & Filtering -->
+        <div class="d-flex mb-3">
+            <div class="d-flex">
+                <input id="keyInp" class="form-control me-2" onchange="key = this.value" type="search" placeholder="Mã/Tên nhà cung cấp">
+                <button class="btn bg-color-1 text-white flex-shrink-0" onclick="load()">Tìm kiếm</button>
+                <button class="btn bg-color-4 color-2 border-color-1 ms-2 flex-shrink-0"
+                    onclick="reset()">Làm mới</button>
+            </div>
+
+            <!-- Key tag -->
+            <span id="keyTag" class="d-flex align-items-center bg-white px-3 rounded-2 shadow-sm h-auto w-auto p-0 ms-2">
+                <label class="text-secondary">Từ khóa tìm kiếm: "<b class="fst-italic">Hữu hạn</b>"</label>
+                <i class="fa-solid fa-xmark ms-2 h5 clickable mb-0" onclick="resetKey()"></i>
+            </span>
+
+            <div class="flex-fill"></div>
+            <select name="" id="serviceIdSelect" class="form-select w-auto me-2" onchange="load()">
+                <option value="">Tất cả dịch vụ</option>
+            </select>
+            <select name="" id="providerStatusSelect" class="form-select w-auto" onchange="load()">
+                <option value="">Tất cả trạng thái</option>
+            </select>
+        </div>
+
+        <div class="card card-body p-2 pt-1 shadow-sm">
+            <table id="list-providers" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 30px;"><input type="checkbox" class="form-check-input"></th>
+                        <th style="width:50px;">STT</th>
+                        <th>Mã</th>
+                        <th>Tên</th>
+                        <th>Loại dịch vụ</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td><input type="checkbox" class="form-check-input"></td>
+                    <td>${i+1}</td>
+                    <td><b>${e.id}</b><i class="fa-regular fa-copy ms-1 text-secondary clickable" title="Sao chép"></i></td>
+                    <td>${e.name}</td>
+                    <td>${e.serviceType}</td>
+                    <td class="opacity-50">${e.status}</td>
+                    <td>
+                        <div class="d-flex ">
+                            <a href="#" class="link-primary cursor-pointer">So sánh</a>
+                            <div class="mx-1">|</div>
+                            <a href="#" class="link-info">Xem chi tiết</a>
+                            <div class="mx-1">|</div>
+                            <a href="#" class="link-secondary">Cập nhật</a>
+                            <div class="mx-1">|</div>
+                            <a href="#" class="link-danger">Xóa</a>
+                        </div>
+                    </td>
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <nav class="d-flex justify-content-center">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link"><i class="fa-solid fa-chevron-left"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="fa-solid fa-chevron-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- <div class="row g-2">
+            <div class="col-lg-8">
+                <label class="mt-2 fst-italic color-3">Tìm thấy 3 nhà cung cấp</label>
+                <div class="card card-body p-0 overflow-hidden mb-2 shadow-sm" style="height: 200px;">
+                    <div class="d-flex h-100">
+                        <img src="/assets/evn-logo.png" width="200" style="object-fit: cover;" class="h-100 border-end">
+                        <div class="d-flex flex-column ms-2 p-2 w-100">
+                            <div class="d-flex w-100">
+                                <h3>Công ty TNHH EVN Hà Nội</h3>
+                                <div class="flex-fill"></div>
+                                <label class="fw-bold m-1" style="height: fit-content; color: rgb(9, 218, 37)">
+                                    <i class="fa-solid fa-check" style="font-size: 18px;"></i>
+                                    Đang hợp tác
+                                </label>
+                            </div>
+                            <div class="d-flex">
+                                <label class="border-color-1 px-2 color-1 py-1 fw-bold rounded-1" style="height: fit-content; width: fit-content;">
+                                    Điện nước
+                                </label>
+                            </div>
+                            <p class="text-secondary mt-2 fst-italic mb-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Số 12, đường Trần Phú, quận Hà Đông, thành phố Hà Nội
+                            </p>
+                            <label >Cung cấp điện sinh hoạt 220v, điện công nghiệp 3 pha, ...</label>
+                            <div class="flex-fill"></div>
+                            <div class="d-flex align-items-center">
+                                <div style="font-weight: 300;">
+                                    <i class="fa-solid fa-globe"></i>
+                                    Website
+                                    <a href="https://evnhanoi.vn/">https://evnhanoi.vn</a>
+                                </div>
+                                <div class="flex-fill"></div>
+                                <a href="" class="btn color-2 me-2 border-color-1 flex-shrink-0" title="Gửi mail trao đổi">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                                <a href="" class="btn color-2 me-2 border-color-1 flex-shrink-0">So sánh cùng dịch vụ</a>
+                                <a href="" class="btn bg-color-1 text-white flex-shrink-0">Xem thông tin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-body p-0 overflow-hidden mb-2 shadow-sm" style="height: 200px;">
+                    <div class="d-flex h-100">
+                        <img src="/assets/evn-logo.png" width="200" style="object-fit: cover;" class="h-100 border-end">
+                        <div class="d-flex flex-column ms-2 p-2 w-100">
+                            <div class="d-flex w-100">
+                                <h3>Công ty TNHH EVN Hà Nội</h3>
+                                <div class="flex-fill"></div>
+                                <label class="fw-bold m-1" style="height: fit-content; color: rgb(9, 218, 37)">
+                                    <i class="fa-solid fa-check" style="font-size: 18px;"></i>
+                                    Đang hợp tác
+                                </label>
+                            </div>
+                            <div class="d-flex">
+                                <label class="border-color-1 px-2 color-1 py-1 fw-bold rounded-1" style="height: fit-content; width: fit-content;">
+                                    Điện nước
+                                </label>
+                            </div>
+                            <p class="text-secondary mt-2 fst-italic mb-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Số 12, đường Trần Phú, quận Hà Đông, thành phố Hà Nội
+                            </p>
+                            <label >Cung cấp điện sinh hoạt 220v, điện công nghiệp 3 pha, ...</label>
+                            <div class="flex-fill"></div>
+                            <div class="d-flex align-items-center">
+                                <div style="font-weight: 300;">
+                                    <i class="fa-solid fa-globe"></i>
+                                    Website
+                                    <a href="https://evnhanoi.vn/">https://evnhanoi.vn</a>
+                                </div>
+                                <div class="flex-fill"></div>
+                                <a href="" class="btn color-2 me-2 border-color-1 flex-shrink-0" title="Gửi mail trao đổi">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                                <a href="" class="btn color-2 me-2 border-color-1 flex-shrink-0">So sánh cùng dịch vụ</a>
+                                <a href="" class="btn bg-color-1 text-white flex-shrink-0">Xem thông tin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-body p-0 overflow-hidden mb-2 shadow-sm" style="height: 200px;">
+                    <div class="d-flex h-100">
+                        <img src="/assets/evn-logo.png" width="200" style="object-fit: cover;" class="h-100 border-end">
+                        <div class="d-flex flex-column ms-2 p-2 w-100">
+                            <div class="d-flex w-100">
+                                <h3>Công ty TNHH EVN Hà Nội</h3>
+                                <div class="flex-fill"></div>
+                                <label class="fw-bold m-1" style="height: fit-content; color: rgb(9, 218, 37)">
+                                    <i class="fa-solid fa-check" style="font-size: 18px;"></i>
+                                    Đang hợp tác
+                                </label>
+                            </div>
+                            <div class="d-flex">
+                                <label class="border-color-1 px-2 color-1 py-1 fw-bold rounded-1" style="height: fit-content; width: fit-content;">
+                                    Điện nước
+                                </label>
+                            </div>
+                            <p class="text-secondary mt-2 fst-italic mb-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Số 12, đường Trần Phú, quận Hà Đông, thành phố Hà Nội
+                            </p>
+                            <label >Cung cấp điện sinh hoạt 220v, điện công nghiệp 3 pha, ...</label>
+                            <div class="flex-fill"></div>
+                            <div class="d-flex align-items-center">
+                                <div style="font-weight: 300;">
+                                    <i class="fa-solid fa-globe"></i>
+                                    Website
+                                    <a href="https://evnhanoi.vn/">https://evnhanoi.vn</a>
+                                </div>
+                                <div class="flex-fill"></div>
+                                <a href="" class="btn color-2 me-2 border-color-1 flex-shrink-0" title="Gửi mail trao đổi">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                                <a href="" class="btn color-2 me-2 border-color-1 flex-shrink-0">So sánh cùng dịch vụ</a>
+                                <a href="" class="btn bg-color-1 text-white flex-shrink-0">Xem thông tin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="d-flex align-items-center">
+                    <label class="mt-2  fst-italic color-3 flex-fill">Nhà cung cấp tiềm năng</label>
+                    <a href="" class="color-2 clickable">Xem tất cả</a>
+                </div>
+                
+                <a href="provider-detail.html" class="card text-decoration-none card-body p-0 overflow-hidden mb-2 shadow-sm clickable mb-2" style="height: 100px;">
+                    <div class="d-flex h-100">
+                        <img src="/assets/evn-logo.png" width="100" style="object-fit: cover;" class="h-100 border-end">
+                        <div class="d-flex flex-column ms-2 p-2 w-100">
+                            <h5>Công ty TNHH EVN Hà Nội</h5>
+                            <label class="border-color-1 px-1 color-1 fw-bold rounded-1" style="font-size: 13px; height: fit-content; width: fit-content;">
+                                Điện nước
+                            </label>
+                            <div class="flex-fill"></div>
+                            <label class="text-secondary" style="font-size: 12px;">Cung cấp điện sinh hoạt 220v, điện công nghiệp 3 pha, ...</label>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="card card-body p-0 overflow-hidden mb-2 shadow-sm clickable mb-2" style="height: 100px;">
+                    <div class="d-flex h-100">
+                        <img src="/assets/evn-logo.png" width="100" style="object-fit: cover;" class="h-100 border-end">
+                        <div class="d-flex flex-column ms-2 p-2 w-100">
+                            <h5>Công ty TNHH EVN Hà Nội</h5>
+                            <label class="border-color-1 px-1 color-1 fw-bold rounded-1" style="font-size: 13px; height: fit-content; width: fit-content;">
+                                Điện nước
+                            </label>
+                            <div class="flex-fill"></div>
+                            <label class="text-secondary" style="font-size: 12px;">Cung cấp điện sinh hoạt 220v, điện công nghiệp 3 pha, ...</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div> -->
+    </div>
+    <!-- End List Provider -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/script.js"></script>
+
+    <script>
+        const keyInp = $('#keyInp');
+        const serviceIdSelect = $('#serviceIdSelect');
+        const providerStatusSelect = $('#providerStatusSelect');
+        let defaultlist = [];
+        let list = [];
+        
+        const load = () => {
+            list = defaultlist;
+            if (keyInp.val()) {
+                list = list.filter(e => e.name.includes(keyInp.val()));
+            }
+            if (serviceIdSelect.val()) {
+                list = list.filter(e => e.serviceId == serviceIdSelect.val());
+            }
+            if (providerStatusSelect.val()) {
+                list = list.filter(e => e.status == providerStatusSelect.val());
+            }
+
+            if (keyInp.val()) {
+                $('#keyTag b').text(keyInp.val());
+                $('#keyTag').removeClass('d-none');
+                keyInp.val('');
+            } else {
+                $('#keyTag').addClass('d-none');
+            }
+
+            updateTable();
+        }
+
+        const updateTable = () => {
+            const $tbody = $('#list-providers tbody');
+            $tbody.empty();
+            list.forEach((e, i) => {
+                $tbody.append(`
+                    <tr>
+                        <td><input type="checkbox" class="form-check-input"></td>
+                        <td>${i+1}</td>
+                        <td><b>${e.id}</b><i class="fa-regular fa-copy ms-1 text-secondary clickable" title="Sao chép"></i></td>
+                        <td>${e.name}</td>
+                        <td>${e.serviceName}</td>
+                        <td class="${ e.status == 'Đang hợp tác'? 'text-success fw-bold':'text-secondary'}">
+                            ${ e.status == 'Đang hợp tác'? '<i class="fa-solid fa-check"></i>':''}
+                            ${e.status}
+                        </td>
+                        <td>
+                        <div class="d-flex ">
+                            <a href="provider-compare.html" class="link-primary cursor-pointer" title="So sánh với các nhà cung cấp khác">So sánh</a>
+                            <div class="mx-1">|</div>
+                            <a href="provider-detail.html" class="link-info cursor-pointer" title="Xem thông tin chi tiết về nhà cung cấp này">Xem chi tiết</a>
+                            <div class="mx-1">|</div>
+                            <a href="provider-update.html" class="link-secondary cursor-pointer" title="Cập nhật thông tin cơ bản của nhà cung cấp">Cập nhật</a>
+                            <div class="mx-1">|</div>
+                            <a href="#" class="link-danger cursor-pointer" title="Xóa nhà cung cấp ra khỏi hệ thống">Xóa</a>
+                        </div>
+                    </td>
+                    </tr>
+                `);
+            });
+        }
+
+        const reset = () => {
+            keyInp.val('');
+            serviceIdSelect.val('');
+            providerStatusSelect.val('');
+            list = defaultlist;
+            updateTable();
+        }
+
+        const resetKey = () => {
+            keyInp.val('');
+            load();
+        }
+
+        $(document).ready(() => {
+            $('#keyTag').addClass('d-none');
+
+            providerStatus.forEach(e => {
+                providerStatusSelect.append(`
+                    <option value="${e}">${e}</option>
+                `);
+            });
+
+            services.forEach(e => {
+                serviceIdSelect.append(`
+                    <option value="${e.id}">${e.name}</option>
+                `);
+            });
+
+            providers.forEach(e => {
+                const service = services.find(s => s.id == e.serviceId);
+                list.push({
+                    id: e.id,
+                    name: e.name,
+                    serviceName: service.name,
+                    serviceId: service.id,
+                    status: e.status
+                });
+            });
+            defaultlist = list;
+            updateTable();
+        });
+    </script>
+</body>
+</html>

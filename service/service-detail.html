@@ -19,25 +19,25 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto ">
             <li class="nav-item mb-2">
-                <a href="index.html" class="nav-link text-light" aria-current="page">
+                <a href="/index.html" class="nav-link text-light" aria-current="page">
                     <i class="fa-solid fa-chart-simple" width="24"></i>
                     Thống kê
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="provider.html" class="nav-link text-light ">
+                <a href="/provider/provider.html" class="nav-link text-light">
                     <i class="fa-solid fa-truck" width="24"></i>
                     Nhà cung cấp
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="service.html" class="nav-link text-light active" aria-current="page">
+                <a href="/service/service.html" class="nav-link text-light active" aria-current="page">
                     <i class="fa-solid fa-list" width="24"></i>
                     Dịch vụ
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="invoice.html" class="nav-link text-light">
+                <a href="/invoice/invoice.html" class="nav-link text-light">
                     <i class="fa-solid fa-file" width="24"></i>
                     Hóa đơn dịch vụ
                 </a>
@@ -119,34 +119,96 @@
     <!-- Start Content -->
     <div class="content p-3" style="margin-top: 50px; margin-left: 280px;">
         
-        <h4>Thêm dịch vụ mới</h4>
+        <h4>Thông tin chi tiết về dịch vụ</h4>
         
+        <div class="d-flex mb-2">
+            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-arrow-left me-1"></i>
+                Quay lại
+            </a>
+            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-trash me-1"></i>
+                Xóa dịch vụ
+            </a>
+            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-eye me-1"></i>
+                Xem nhà cung cấp
+            </a>
+            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-eye me-1"></i>
+                Xem lịch sử thanh toán
+            </a>
+            <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-chart-simple me-1"></i>
+                Thống kê dịch vụ
+            </a>
+        </div>
+
         <div class="card card-body">
+            <h5 class="text-center mb-3 fw-bold">Thông tin cơ bản</h5>
+
             <form action="" method="post">
                 <div class="row g-3">
-                    <!-- Name -->
+
+                    <div class="col-md-4">
+                        <div class="d-flex mb-2">
+                            <div>Mã dịch vụ</div>
+                            <div class="flex-fill"></div>
+                            <b>SE123456</b>
+                            <i class="fa-regular fa-copy ms-1 h5 clickable"></i>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div>Tạo mới</div>
+                            <div class="flex-fill"></div>
+                            <b>19:02:36 29/12/2004</b>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div>Cập nhật</div>
+                            <div class="flex-fill"></div>
+                            <b>19:02:36 29/12/2004</b>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="flex-shrink-0">Trạng thái</div>
+                            <div class="flex-fill"></div>
+                            <select name="" id="" class="form-select-sm">
+                                <option value="">Chưa kí hợp đồng</option>
+                                <option value="">Đã kí hợp đồng</option>
+                            </select>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div>Nhà cung cấp</div>
+                            <div class="flex-fill"></div>
+                            <b>Công ty điện lực Hà Nội</b>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div>Mã nhà cung cấp</div>
+                            <div class="flex-fill"></div>
+                            <b>PR123456</b>
+                        </div>
+                    </div>
+
                     <div class="col-md-8">
+                        <!-- Name -->
                         <label for="inpName" class="mb-1">Tên</label>
-                        <input id="inpName" type="text" class="form-control" placeholder="Nhập tên của dịch vụ">
+                        <input id="inpName" value="Dịch vụ điện tổng hợp" type="text" class="form-control" placeholder="Nhập tên của dịch vụ">
+                        
+                        <label for="inpDesc" class="mb-1 mt-2">Mô tả</label>
+                        <textarea id="inpDesc" class="form-control text-start" placeholder="Nhập tên của dịch vụ">Cung cấp nguồn điện cho các tòa nhà cao tầng</textarea>
+                        
+                        <label class="mb-1 mt-2">Đơn vị chi phí</label>
+                        <input value="Số điện (kwh)" type="text" class="form-control" placeholder="Nhập tên của dịch vụ">
+                        
+                        <div class="d-flex justify-content-center mt-3">
+                            <a class="btn bg-color-1 text-white flex-shrink-0" type="submit">
+                                <i class="fa-solid fa-floppy-disk me-1"></i>
+                                Lưu thay đổi
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="col-md-8">
-                        <label for="inpDesc" class="mb-1">Mô tả</label>
-                        <textarea id="inpDesc" class="form-control" placeholder="Nhập tên của dịch vụ"></textarea>
-                    </div>
+                    
                 </div>
 
-                <div class="d-flex justify-content-center mt-3">
-
-                    <a href="service.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
-                        <i class="fa-solid fa-arrow-left me-1"></i>
-                        Quay lại
-                    </a>
-                    <a class="btn bg-color-1 text-white flex-shrink-0" type="submit">
-                        <i class="fa-solid fa-floppy-disk me-1"></i>
-                        Lưu mới
-                    </a>
-                </div>
 
             </form>
         </div>

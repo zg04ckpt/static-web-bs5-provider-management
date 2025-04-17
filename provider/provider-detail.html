@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhà cung cấp</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Start Sidebar -->
+    <div class="d-none d-md-flex flex-column top-0 vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
+        <a href="/" class="d-flex align-items-center text-light mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="../assets/logo.png" alt="Bootstrap" class="bg-white rounded-pill" width="40" height="40">
+            <span class="fs-4 ms-3">Quản lý NCC</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto ">
+            <li class="nav-item mb-2">
+                <a href="/index.html" class="nav-link text-light" aria-current="page">
+                    <i class="fa-solid fa-chart-simple" width="24"></i>
+                    Thống kê
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/provider/provider.html" class="nav-link text-light active">
+                    <i class="fa-solid fa-truck" width="24"></i>
+                    Nhà cung cấp
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/service/service.html" class="nav-link text-light" aria-current="page">
+                    <i class="fa-solid fa-list" width="24"></i>
+                    Dịch vụ
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/invoice/invoice.html" class="nav-link text-light">
+                    <i class="fa-solid fa-file" width="24"></i>
+                    Hóa đơn dịch vụ
+                </a>
+            </li>
+        </ul>
+      </div>
+    <!-- End Sidebar -->
+
+    <!-- Start NavBar -->
+    <nav class="navbar shadow-sm py-0 fixed-top navbar-expand-lg bg-body-tertiary" style="z-index: 99; ">
+        <!-- Show when small -->
+        <div class="d-md-none container-fluid bg-white">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/logo.png" alt="Bootstrap" width="30" height="30">
+                Quản lý NCC
+            </a>
+            <button class="navbar-toggler m-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mb-2">
+                        <a href="index.html" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-chart-simple" width="24"></i>
+                            Thống kê
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="provider.html" class="nav-link">
+                            <i class="fa-solid fa-truck" width="24"></i>
+                            Nhà cung cấp
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="service.html" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-list" width="24"></i>
+                            Dịch vụ
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="invoice.html" class="nav-link">
+                            <i class="fa-solid fa-file" width="24"></i>
+                            Hóa đơn dịch vụ
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Tên nhà cung cấp">
+                    <button class="btn bg-color-1 text-white flex-shrink-0" type="submit">Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Show when large -->
+        <div class="d-none d-md-flex py-2 align-items-center w-100" style="padding-left: 280px;">
+            <h3 class="color-2 ps-3 mb-0">Nhà cung cấp dịch vụ</h3>
+            <div class="flex-fill"></div>
+
+            <!-- Avatar -->
+            <div class="dropdown me-3">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown">
+                    <img src="../assets/manager.png" alt="" width="32" height="32" class="me-2 rounded-circle border-color-1 me-2">
+                    <strong class="color-1">manager</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>  
+
+        <!-- Loading -->
+        <div class="position-absolute top-100 start-0 w-100 loading">
+            <div class="item"></div>
+        </div>
+    </nav>
+    <!-- End NavBar -->
+    
+    <!-- Start Provider Detail -->
+    <div class="content provider-detail" style="margin-top: 50px; margin-left: 280px;">
+        <!-- Top banner -->
+        <div class="position-relative">
+            <img src="/assets/evn-band.png" height="300" alt="" style="width: 100%; object-fit: cover;">
+
+            <div class="d-flex position-absolute start-0 bottom-0 mb-2 ms-2">
+                <a href="provider.html" class="btn border-color-1 bg-white shadow-sm flex-shrink-0  me-2">
+                    <i class="fa-solid fa-arrow-left me-1"></i>
+                    Quay lại
+                </a>
+                <a href="provider-update.html" class="btn border-color-1 bg-white shadow-sm flex-shrink-0  me-2">
+                    <i class="fa-solid fa-file-pen me-1"></i>
+                    Cập nhật thông tin
+                </a>
+                <a href="#" class="btn border-color-1 bg-white shadow-sm flex-shrink-0  me-2">
+                    <i class="fa-solid fa-chart-simple me-1"></i>
+                    So sánh
+                </a>
+                <a href="#" class="btn border-color-1 bg-white shadow-sm flex-shrink-0  me-2">
+                    <i class="fa-solid fa-eye me-1"></i>
+                    Xem hóa đơn thanh toán
+                </a>
+                <a href="provider-add-contract.html" class="btn border-color-1 bg-white shadow-sm flex-shrink-0  me-2">
+                    <i class="fa-solid fa-plus me-1"></i>
+                    Thêm hợp đồng
+                </a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="p-3 mt-2">
+
+            <!-- Basic -->
+            <div class="d-flex">
+                <img src="/assets/evn-logo.png" alt="" 
+                    class="object-fit-cover shadow-sm border-black rounded-1" width="200" height="200">
+
+                <div class="ms-3 card card-body border-color-3 shadow-sm mb-3 p-0 overflow-hidden">
+                    <h4 class="text-center bg-color-3 py-2 text-white">Thông tin cơ bản</h4>
+                    <div class="px-4 py-3">
+                        <div class="row g-5">
+                            <div class="col-md-6">
+                                <!-- Name -->
+                                <div class="d-flex my-1">
+                                    <i class="fa-solid fa-house me-2 h5 text-secondary"></i>
+                                    <h5 class="flex-fill flex-shrink-0 text-secondary">Tên </h5>
+                                    <h5><b class="">Tổng công ty điện lực TP.Hà Nội</b></h5>
+                                </div>
+                                <!-- ID -->
+                                <div class="d-flex align-items-center my-1">
+                                    <i class="fa-solid fa-circle-info text-secondary h5 me-2"></i>
+                                    <h5 class="flex-fill text-secondary">Mã định danh</h5>
+                                    <h5><b>#PO123456</b></h5>
+                                    <i class="fa-regular fa-copy h4 ms-2 clickable"></i>
+                                </div>
+                                <!-- Email -->
+                                <div class="d-flex align-items-center my-1">
+                                    <i class="fa-solid fa-coins text-secondary h5 me-2"></i>
+                                    <h5 class="flex-fill text-secondary">Mã số thuế</h5>
+                                    <h5><b>0301234567</b></h5>
+                                </div>
+                                <!-- Status -->
+                                <div class="d-flex align-items-center my-1">
+                                    <i class="fa-solid fa-power-off text-secondary h5 me-2"></i>
+                                    <h5 class="flex-fill text-secondary">Trạng thái</h5>
+                                    <h5><b class="fst-italic">Đang hợp tác</b></h5>
+                                </div>
+                                <!-- Serivce Name -->
+                                <div class="d-flex align-items-center my-1">
+                                    <i class="fa-solid fa-layer-group text-secondary h5 me-2"></i>
+                                    <h5 class="flex-fill text-secondary">Loại dịch vụ</h5>
+                                    <h5><b>Dịch vụ điện nước</b></h5>
+                                </div>
+                                <!-- Serivce Id -->
+                                <div class="d-flex align-items-center my-1">
+                                    <i class="fa-solid fa-circle-info text-secondary h5 me-2"></i>
+                                    <h5 class="flex-fill text-secondary">Mã dịch vụ</h5>
+                                    <h5><b>#SER123456</b></h5>
+                                    <i class="fa-regular fa-copy h4 ms-2 clickable"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                
+                                <!-- Address -->
+                                <div class="d-flex my-1">
+                                    <i class="fa-solid fa-location-dot me-2 h5 text-secondary"></i>
+                                    <h5 class="flex-fill flex-shrink-0 text-secondary">Địa chỉ</h5>
+                                </div>
+                                <h5><b class="">Số 12, đường Trần Phú, Hà Đông, Hà Nội</b></h5>
+                                <!-- Contact -->
+                                <div class="d-flex align-items-center my-1 mt-3">
+                                    <i class="fa-solid fa-phone h5 me-2 text-secondary"></i>
+                                    <h5 class="flex-fill text-secondary" >Liên hệ</h5>
+                                    <h5><b>1900.1266</b></h5>
+                                </div>
+                                <!-- Email -->
+                                <div class="d-flex align-items-center my-1">
+                                    <i class="fa-solid fa-envelope h5 text-secondary me-2"></i>
+                                    <h5 class="flex-fill text-secondary">Email</h5>
+                                    <h5><b>evnhanoi@evnhanoi.vn</b></h5>
+                                </div>
+                                <!-- Website -->
+                                <div class="d-flex align-items-center my-1">
+                                    <i class="fa-solid fa-globe h5 text-secondary me-2"></i>
+                                    <h5 class="flex-fill text-secondary">Website</h5>
+                                    <h5><b><a href="https://evnhanoi.vn">https://evnhanoi.vn</a></b></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contract -->
+            <div class="card card-bod shadow-sm mb-3 p-0 overflow-hidden">
+                <h5 class="text-center py-2">THÔNG TIN HỢP ĐỒNG</h5>
+                <div class="px-4 pb-3">
+                    <div class="row g-5">
+                        <div class="col-md-4">
+                            <!-- ID -->
+                            <div class="d-flex align-items-center my-1">
+                                <i class="fa-solid fa-circle-info text-secondary h5 me-2"></i>
+                                <h5 class="flex-fill text-secondary">Mã hợp đồng</h5>
+                                <h5><b>#CON123456</b></h5>
+                                <i class="fa-regular fa-copy h4 ms-2 clickable"></i>
+                            </div>
+                            <!-- SignedDate -->
+                            <div class="d-flex align-items-center my-1">
+                                <i class="fa-solid fa-calendar text-secondary h5 me-2"></i>
+                                <h5 class="flex-fill text-secondary">Ngày kí</h5>
+                                <h5><b>12/09/2024</b></h5>
+                            </div>
+                            <!-- ExpireDate -->
+                            <div class="d-flex align-items-center my-1">
+                                <i class="fa-solid fa-calendar text-secondary h5 me-2"></i>
+                                <h5 class="flex-fill text-secondary">Ngày hết hạn</h5>
+                                <h5><b>12/09/2025</b></h5>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Representation A -->
+                            <div class="d-flex align-items-center my-1">
+                                <i class="fa-solid fa-landmark h5 me-2 text-secondary"></i>
+                                <h5 class="flex-fill text-secondary flex-shrink-0" >Bên A</h5>
+                            </div>
+                            <h5><b>Tổng công ty điện lực TP.Hà Nội</b></h5>
+                            <!-- Representation -->
+                            <div class="d-flex align-items-center my-1 mt-3">
+                                <i class="fa-solid fa-user h5 text-secondary me-2"></i>
+                                <h5 class="flex-fill text-secondary">Người đại diện</h5>
+                                <h5><b>Hoàng Cao Nguyên</b></h5>
+                            </div>
+                            <!-- Representation Contact -->
+                            <div class="d-flex align-items-center my-1">
+                                <i class="fa-solid fa-user h5 text-secondary me-2"></i>
+                                <h5 class="flex-fill text-secondary">Liên hệ</h5>
+                                <h5><b>0942502144</b></h5>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Representation B -->
+                            <div class="d-flex align-items-center my-1">
+                                <i class="fa-solid fa-landmark h5 me-2 text-secondary"></i>
+                                <h5 class="flex-fill text-secondary flex-shrink-0">Bên B</h5>
+                            </div>
+                            <h5><b>Công ty TNHH Hoa Sen Trắng</b></h5>
+                            <!-- Representation -->
+                            <div class="d-flex align-items-center my-1 mt-3">
+                                <i class="fa-solid fa-user h5 text-secondary me-2"></i>
+                                <h5 class="flex-fill text-secondary">Người đại diện</h5>
+                                <h5><b>Trương Mỹ Lan</b></h5>
+                            </div>
+                            <!-- Representation Contact -->
+                            <div class="d-flex align-items-center my-1">
+                                <i class="fa-solid fa-user h5 text-secondary me-2"></i>
+                                <h5 class="flex-fill text-secondary">Liên hệ</h5>
+                                <h5><b>0333443553</b></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-2">
+                    <button class="btn btn-outline-dark rounded-0 me-2">Xem chi file hợp đồng</button>
+                    <button class="btn btn-outline-dark rounded-0 me-2">Xem dịch vụ</button>
+                    <button class="btn btn-outline-dark rounded-0">Tải xuống hợp đồng</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- End Provider Detail-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

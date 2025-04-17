@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thống kê</title>
+    <title>Quản lý dịch vụ</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -11,7 +11,7 @@
 <body>
 
     <!-- Start Sidebar -->
-    <div class="d-none d-md-flex flex-column vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
+    <div class="d-none d-md-flex flex-column top-0 vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
         <a href="/" class="d-flex align-items-center text-light mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="../assets/logo.png" alt="Bootstrap" class="bg-white rounded-pill" width="40" height="40">
             <span class="fs-4 ms-3">Quản lý NCC</span>
@@ -19,31 +19,31 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto ">
             <li class="nav-item mb-2">
-                <a href="index.html" class="nav-link text-light active" aria-current="page">
+                <a href="/index.html" class="nav-link text-light" aria-current="page">
                     <i class="fa-solid fa-chart-simple" width="24"></i>
                     Thống kê
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="provider.html" class="nav-link text-light">
+                <a href="/provider/provider.html" class="nav-link text-light active">
                     <i class="fa-solid fa-truck" width="24"></i>
                     Nhà cung cấp
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="service.html" class="nav-link text-light" aria-current="page">
+                <a href="/service/service.html" class="nav-link text-light " aria-current="page">
                     <i class="fa-solid fa-list" width="24"></i>
                     Dịch vụ
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="invoice.html" class="nav-link text-light">
+                <a href="/invoice/invoice.html" class="nav-link text-light">
                     <i class="fa-solid fa-file" width="24"></i>
                     Hóa đơn dịch vụ
                 </a>
             </li>
         </ul>
-      </div>
+    </div>
     <!-- End Sidebar -->
 
     <!-- Start NavBar -->
@@ -52,7 +52,7 @@
         <div class="d-md-none container-fluid bg-white">
             <a class="navbar-brand" href="#">
                 <img src="../assets/logo.png" alt="Bootstrap" width="30" height="30">
-                Quản lý nhà cung cấp
+                Quản lý NCC
             </a>
             <button class="navbar-toggler m-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
@@ -93,7 +93,7 @@
 
         <!-- Show when large -->
         <div class="d-none d-md-flex py-2 align-items-center w-100" style="padding-left: 280px;">
-            <h3 class="color-2 ps-3 mb-0">Thống kê chi phí</h3>
+            <h3 class="color-2 ps-3 mb-0">Nhà cung cấp dịch vụ</h3>
             <div class="flex-fill"></div>
 
             <!-- Avatar -->
@@ -116,11 +116,83 @@
     </nav>
     <!-- End NavBar -->
     
-    <!-- Start List Service -->
-    <div class="row">
+    <!-- Start Content -->
+    <div class="content p-3" style="margin-top: 50px; margin-left: 280px;">
+        
+        <h4>So sánh mức giá cùng dịch vụ</h4>
+        
+        <div class="d-flex mb-2">
+            <a href="provider.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-arrow-left me-1"></i>
+                Quay lại
+            </a>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-6">
+                <div class="card card-body">
+                    <h5 class="text-center mb-3">THÔNG TIN SO SÁNH</h5>
+                    <div class="d-flex mb-2">
+                        <label class="flex-fill">Tên NCC</label>
+                        <b>Tổng công ty Điện lực Việt Nam</b>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <label class="flex-fill">Loại dịch vụ</label>
+                        <b>Điện</b>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <label class="flex-fill">Đơn vị</label>
+                        <b>kwh</b>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <label class="flex-fill">Giá cung cấp</label>
+                        <b>3.800</b>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <label class="flex-fill">Đơn vị tiền tệ</label>
+                        <b>VND</b>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card card-body">
+                    <h5 class="text-center mb-3">KẾT QUẢ SO SÁNH</h5>
+                    <div class="d-flex mb-2">
+                        <label class="flex-fill">Xếp hạng mức giá</label>
+                        <b>5</b>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <label class="flex-fill">Độ lệch so với giá trung bình</label>
+                        <b>241 (+6.8%)</b>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <label class="flex-fill">Mức giá trung bình</label>
+                        <b>3.559</b>
+                    </div>
+                    <hr class="my-1">
+                    <div class="d-flex mb-2 mt-2">
+                        <label class="flex-fill">Mức giá cao nhất</label>
+                        <b>3.955</b>
+                    </div>
+                    <div class="d-flex mb-2 align-items-center">
+                        <b class="flex-fill">Công ty Diên Hòa</b>
+                        <a href="provider-detail.html" class="text-decoration-none link-info">Xem nhà cung cấp</a>
+                    </div>
+                    <hr class="my-1">
+                    <div class="d-flex mb-2 mt-2">
+                        <label class="flex-fill">Mức giá thấp nhất</label>
+                        <b>2.759</b>
+                    </div>
+                    <div class="d-flex mb-2 align-items-center">
+                        <b class="flex-fill">Công ty Điện lực Miền Bắc</b>
+                        <a href="provider-detail.html" class="text-decoration-none link-info">Xem nhà cung cấp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-    <!-- End List Service -->
+    <!-- End Content -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

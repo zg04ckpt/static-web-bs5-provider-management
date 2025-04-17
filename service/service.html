@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý dịch vụ</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Start Sidebar -->
+    <div class="d-none d-md-flex flex-column top-0 vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
+        <a href="/" class="d-flex align-items-center text-light mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="../assets/logo.png" alt="Bootstrap" class="bg-white rounded-pill" width="40" height="40">
+            <span class="fs-4 ms-3">Quản lý NCC</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto ">
+            <li class="nav-item mb-2">
+                <a href="/index.html" class="nav-link text-light" aria-current="page">
+                    <i class="fa-solid fa-chart-simple" width="24"></i>
+                    Thống kê
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/provider/provider.html" class="nav-link text-light">
+                    <i class="fa-solid fa-truck" width="24"></i>
+                    Nhà cung cấp
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/service/service.html" class="nav-link text-light active" aria-current="page">
+                    <i class="fa-solid fa-list" width="24"></i>
+                    Dịch vụ
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/invoice/invoice.html" class="nav-link text-light">
+                    <i class="fa-solid fa-file" width="24"></i>
+                    Hóa đơn dịch vụ
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End Sidebar -->
+
+    <!-- Start NavBar -->
+    <nav class="navbar shadow-sm py-0 fixed-top navbar-expand-lg bg-body-tertiary" style="z-index: 99; ">
+        <!-- Show when small -->
+        <div class="d-md-none container-fluid bg-white">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/logo.png" alt="Bootstrap" width="30" height="30">
+                Quản lý NCC
+            </a>
+            <button class="navbar-toggler m-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mb-2">
+                        <a href="index.html" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-chart-simple" width="24"></i>
+                            Thống kê
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="provider.html" class="nav-link">
+                            <i class="fa-solid fa-truck" width="24"></i>
+                            Nhà cung cấp
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="service.html" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-list" width="24"></i>
+                            Dịch vụ
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="invoice.html" class="nav-link">
+                            <i class="fa-solid fa-file" width="24"></i>
+                            Hóa đơn dịch vụ
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Tên nhà cung cấp">
+                    <button class="btn bg-color-1 text-white flex-shrink-0" type="submit">Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Show when large -->
+        <div class="d-none d-md-flex py-2 align-items-center w-100" style="padding-left: 280px;">
+            <h3 class="color-2 ps-3 mb-0">Dịch vụ</h3>
+            <div class="flex-fill"></div>
+
+            <!-- Avatar -->
+            <div class="dropdown me-3">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown">
+                    <img src="../assets/manager.png" alt="" width="32" height="32" class="me-2 rounded-circle border-color-1 me-2">
+                    <strong class="color-1">manager</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>  
+
+        <!-- Loading -->
+        <div class="position-absolute top-100 start-0 w-100 loading">
+            <div class="item"></div>
+        </div>
+    </nav>
+    <!-- End NavBar -->
+    
+    <!-- Start Content -->
+    <div class="content p-3" style="margin-top: 50px; margin-left: 280px;">
+        
+        <!-- Action -->
+        <div class="d-flex mb-3">
+            <a href="service-create.html" class="btn me-2 bg-color-4 color-2 border-color-1 flex-shrink-0" type="submit">
+                <i class="fa-solid fa-plus"></i>
+                Thêm dịch vụ mới
+            </a>
+        </div>
+
+        <!-- Searching -->
+        <div class="d-flex mb-3">
+            <div class="d-flex">
+                <input id="keyInp" class="form-control me-2" onchange="key = this.value" type="search" placeholder="Mã/Tên nhà cung cấp">
+                <button class="btn bg-color-1 text-white flex-shrink-0" onclick="load()">Tìm kiếm</button>
+                <button class="btn bg-color-4 color-2 border-color-1 ms-2 flex-shrink-0"
+                    onclick="reset()">Làm mới</button>
+            </div>
+
+            <!-- Key tag -->
+            <span id="keyTag" class="d-flex align-items-center bg-white px-3 rounded-2 shadow-sm h-auto w-auto p-0 ms-2">
+                <label class="text-secondary">Từ khóa tìm kiếm: "<b class="fst-italic">Hữu hạn</b>"</label>
+                <i class="fa-solid fa-xmark ms-2 h5 clickable mb-0" onclick="resetKey()"></i>
+            </span>
+        </div>
+        
+        <div class="card card-body pt-1">
+            <!-- Tab -->
+            <ul id="tab" class="nav tab nav-underline text-light">
+                <li class="nav-item">
+                    <a class="nav-link text-secondary active">Tất cả</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary " >Đã kí hợp đồng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" >Chưa kí hợp đồng</a>
+                </li>
+            </ul>
+
+            <!-- Services -->
+            <div id="listService" class="row g-3 mt-2">
+
+                <div class="col-6">
+                    <div class="d-flex border-color-1 rounded-2 service-item p-2">
+                        <div class="d-flex flex-column ms-2 w-100">
+                            <h5 class="fw-bolder">Dịch vụ điện nước</h5>
+                            <div class="d-flex">
+                                <div class="text-secondary">Mã dịch vụ:</div>
+                                <b class="ms-1">SE123456</b>
+                                <i class="fa-regular fa-copy ms-1 clickable"></i>
+                            </div>
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae excepturi sint consequatur. Ut reiciendis cupiditate eveniet architecto corporis assumenda quos maxime sit earum eligendi, aliquid molestiae voluptate alias commodi obcaecati!</p>
+                            <div class="d-flex align-items-center">
+                                <b class="color-2 text-secondary fst-italic">
+                                    Chưa kí hợp đồng
+                                </b>
+                                <div class="flex-fill"></div>
+                                <a href="service-detail.html" class="link-secondary text-decoration-none flex-shrink-0">Xem chi tiết <i class="fa-solid fa-circle-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="d-flex border-info border-2 border rounded-2 service-item p-2">
+                        <div class="d-flex flex-column ms-2 w-100">
+                            <h5 class="fw-bolder">Dịch vụ điện nước</h5>
+                            <div class="d-flex">
+                                <div class="text-secondary">Mã dịch vụ:</div>
+                                <b class="ms-1">SE123456</b>
+                                <i class="fa-regular fa-copy ms-1 clickable"></i>
+                            </div>
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae excepturi sint consequatur. Ut reiciendis cupiditate eveniet architecto corporis assumenda quos maxime sit earum eligendi, aliquid molestiae voluptate alias commodi obcaecati!</p>
+                            <div class="d-flex align-items-center">
+                                <b class="color-2 text-success fst-italic">
+                                    <i class="fa-solid fa-circle-check"></i> Đã kí hợp đồng
+                                </b>
+                                <div class="flex-fill"></div>
+                                <a href="service-detail.html" class="link-info text-decoration-none flex-shrink-0">Xem chi tiết <i class="fa-solid fa-circle-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <nav class="d-flex justify-content-center mt-3">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link"><i class="fa-solid fa-chevron-left"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="fa-solid fa-chevron-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- End Content -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/script.js"></script>
+    <script>
+        const keyInp = $('#keyInp');
+        let listService = services;
+        let $listServices = $('#listService');
+        let status = '';
+
+        const updateList = () => {
+            $listServices.empty();
+            listService.forEach(e => {
+                if (e.status == 'Chưa kí hợp đồng') {
+                    $listServices.append(`
+                        <div class="col-6">
+                            <div class="d-flex border-color-1 rounded-2 service-item p-2">
+                                <div class="d-flex flex-column ms-2 w-100">
+                                    <h5 class="fw-bolder">${e.name}</h5>
+                                    <div class="d-flex">
+                                        <div class="text-secondary">Mã dịch vụ:</div>
+                                        <b class="ms-1">${e.id}</b>
+                                        <i class="fa-regular fa-copy ms-1 clickable"></i>
+                                    </div>
+                                    <p class="mb-0">${e.description}</p>
+                                    <div class="d-flex align-items-center">
+                                        <b class="color-2 text-secondary fst-italic">
+                                            Chưa kí hợp đồng
+                                        </b>
+                                        <div class="flex-fill"></div>
+                                        <a href="service-detail.html" class="link-secondary text-decoration-none flex-shrink-0">Xem chi tiết <i class="fa-solid fa-circle-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                } else {
+                    $listServices.append(`
+                        <div class="col-6">
+                            <div class="d-flex border-info border-2 border rounded-2 service-item p-2">
+                                <div class="d-flex flex-column ms-2 w-100">
+                                    <h5 class="fw-bolder">${e.name}</h5>
+                                    <div class="d-flex">
+                                        <div class="text-secondary">Mã dịch vụ:</div>
+                                        <b class="ms-1">${e.id}</b>
+                                        <i class="fa-regular fa-copy ms-1 clickable"></i>
+                                    </div>
+                                    <p class="mb-0">${e.description}</p>
+                                    <div class="d-flex align-items-center">
+                                        <b class="color-2 text-success fst-italic">
+                                            <i class="fa-solid fa-circle-check"></i> Đã kí hợp đồng
+                                        </b>
+                                        <div class="flex-fill"></div>
+                                        <a href="service-detail.html" class="link-info text-decoration-none flex-shrink-0">Xem chi tiết <i class="fa-solid fa-circle-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                }
+            });
+        }
+
+        const load = () => {
+            listService = services;
+            if (keyInp.val()) {
+                listService = listService.filter(e => e.id.includes(keyInp.val()) || e.name.includes(keyInp.val()));
+            }
+            if (status) {
+                listService = listService.filter(e => e.status == status);
+            }
+
+            if (keyInp.val()) {
+                $('#keyTag b').text(keyInp.val());
+                $('#keyTag').removeClass('d-none');
+                keyInp.val('');
+            } else {
+                $('#keyTag').addClass('d-none');
+            }
+            updateList();
+        }
+
+        const resetKey = () => {
+            keyInp.val('');
+            load();
+        }
+
+        const reset = () => {
+            keyInp.val('');
+            status = '';
+            listService = services;
+            updateList();
+        }
+
+        $('#tab .nav-link').on('click', function(e) {
+            e.preventDefault();
+            $('#tab a').removeClass('active');
+            $(this).addClass('active');
+            status = $(this).text();
+            if (status == 'Tất cả') {
+                status = '';
+            }
+            load();
+        });
+
+        $(document).ready(() => {
+            $('#keyTag').addClass('d-none');
+            updateList();
+        });
+    </script>
+</body>
+</html>

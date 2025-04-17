@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa đơn thanh toán</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Start Sidebar -->
+    <div class="d-none d-md-flex top-0 flex-column vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
+        <a href="/" class="d-flex align-items-center text-light mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="../assets/logo.png" alt="Bootstrap" class="bg-white rounded-pill" width="40" height="40">
+            <span class="fs-4 ms-3">Quản lý NCC</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto ">
+            <li class="nav-item mb-2">
+                <a href="/index.html" class="nav-link text-light" aria-current="page">
+                    <i class="fa-solid fa-chart-simple" width="24"></i>
+                    Thống kê
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/provider/provider.html" class="nav-link text-light">
+                    <i class="fa-solid fa-truck" width="24"></i>
+                    Nhà cung cấp
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/service/service.html" class="nav-link text-light" aria-current="page">
+                    <i class="fa-solid fa-list" width="24"></i>
+                    Dịch vụ
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/invoice/invoice.html" class="nav-link text-light active">
+                    <i class="fa-solid fa-file" width="24"></i>
+                    Hóa đơn dịch vụ
+                </a>
+            </li>
+        </ul>
+      </div>
+    <!-- End Sidebar -->
+
+    <!-- Start NavBar -->
+    <nav class="navbar shadow-sm py-0 fixed-top navbar-expand-lg bg-body-tertiary" style="z-index: 99; ">
+        <!-- Show when small -->
+        <div class="d-md-none container-fluid bg-white">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/logo.png" alt="Bootstrap" width="30" height="30">
+                Quản lý NCC
+            </a>
+            <button class="navbar-toggler m-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mb-2">
+                        <a href="index.html" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-chart-simple" width="24"></i>
+                            Thống kê
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="provider.html" class="nav-link">
+                            <i class="fa-solid fa-truck" width="24"></i>
+                            Nhà cung cấp
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="service.html" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-list" width="24"></i>
+                            Dịch vụ
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="invoice.html" class="nav-link">
+                            <i class="fa-solid fa-file" width="24"></i>
+                            Hóa đơn dịch vụ
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex mb-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Tên nhà cung cấp">
+                    <button class="btn bg-color-1 text-white flex-shrink-0" type="submit">Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Show when large -->
+        <div class="d-none d-md-flex py-2 align-items-center w-100" style="padding-left: 280px;">
+            <h3 class="color-2 ps-3 mb-0">Hóa đơn dịch vụ</h3>
+            <div class="flex-fill"></div>
+
+            <!-- Avatar -->
+            <div class="dropdown me-3">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown">
+                    <img src="../assets/manager.png" alt="" width="32" height="32" class="me-2 rounded-circle border-color-1 me-2">
+                    <strong class="color-1">manager</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>  
+
+        <!-- Loading -->
+        <div class="position-absolute top-100 start-0 w-100 loading">
+            <div class="item"></div>
+        </div>
+    </nav>
+    <!-- End NavBar -->
+    
+    <!-- Start List Service -->
+    <div class="content p-3" style="margin-top: 50px; margin-left: 280px;">
+        <div class="d-flex mb-3">
+            <a href="invoice-create.html" class="btn border-color-1 flex-shrink-0  me-2" type="submit">
+                <i class="fa-solid fa-plus me-1"></i>
+                Thêm hóa đơn
+            </a>
+        </div>
+        
+        <!-- Searching & Filtering -->
+        <div class="d-flex mb-3">
+            <div class="d-flex">
+                <input id="keyInp" class="form-control me-2" onchange="key = this.value" type="search" placeholder="Mã hóa đơn">
+                <button class="btn bg-color-1 text-white flex-shrink-0" onclick="load()">Tìm kiếm</button>
+                <button class="btn bg-color-4 color-2 border-color-1 ms-2 flex-shrink-0"
+                    onclick="reset()">Làm mới</button>
+            </div>
+
+            <!-- Key tag -->
+            <span id="keyTag" class="d-flex align-items-center bg-white px-3 rounded-2 shadow-sm h-auto w-auto p-0 ms-2">
+                <label class="text-secondary">Từ khóa tìm kiếm: "<b class="fst-italic">Hữu hạn</b>"</label>
+                <i class="fa-solid fa-xmark ms-2 h5 clickable mb-0" onclick="resetKey()"></i>
+            </span>
+
+            <div class="flex-fill"></div>
+            <select name="" id="serviceIdSelect" class="form-select w-auto me-2" onchange="load()">
+                <option value="">Tất cả dịch vụ</option>
+            </select>
+            <select name="" id="invoiceStatusSelect" class="form-select w-auto" onchange="load()">
+                <option value="">Tất cả trạng thái</option>
+                <option value="Đã thanh toán">Đã thanh toán</option>
+                <option value="Chưa thanh toán">Chưa thanh toán</option>
+            </select>
+        </div>
+
+        <div class="card card-body p-2 pt-1 shadow-sm">
+            <table id="list-invoices" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 30px;"><input type="checkbox" class="form-check-input"></th>
+                        <th style="width:50px;">STT</th>
+                        <th>Mã</th>
+                        <th>Tên nhà cung cấp</th>
+                        <th>Loại dịch vụ</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <nav class="d-flex justify-content-center">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link"><i class="fa-solid fa-chevron-left"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="fa-solid fa-chevron-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- End List Service -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/script.js"></script>
+    <script>
+
+        const defaultInvoices = [
+        {
+            id: "ORD000001",
+            providerName: "Công ty TNHH ABC",
+            serviceType: "Dịch vụ Internet và mạng nội bộ",
+            totalAmount: 1200000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000002",
+            providerName: "Công ty CP XYZ",
+            serviceType: "Dịch vụ điện tổng hợp",
+            totalAmount: 860000,
+            status: "Chưa thanh toán"
+        },
+        {
+            id: "ORD000003",
+            providerName: "Dịch vụ số Zeta",
+            serviceType: "Dịch vụ cấp nước sinh hoạt",
+            totalAmount: 450000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000004",
+            providerName: "Viễn thông Vina",
+            serviceType: "Dịch vụ Internet và mạng nội bộ",
+            totalAmount: 1000000,
+            status: "Chưa thanh toán"
+        },
+        {
+            id: "ORD000005",
+            providerName: "Hữu hạn Dịch vụ Mặt Trời",
+            serviceType: "Dịch vụ điện tổng hợp",
+            totalAmount: 920000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000006",
+            providerName: "Công ty Nước sạch A",
+            serviceType: "Dịch vụ cấp nước sinh hoạt",
+            totalAmount: 380000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000007",
+            providerName: "Công ty CP Ánh Sáng",
+            serviceType: "Dịch vụ Internet và mạng nội bộ",
+            totalAmount: 1120000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000008",
+            providerName: "Điện lực miền Bắc",
+            serviceType: "Dịch vụ điện tổng hợp",
+            totalAmount: 720000,
+            status: "Chưa thanh toán"
+        },
+        {
+            id: "ORD000009",
+            providerName: "Nhà cung cấp Beta",
+            serviceType: "Dịch vụ cấp nước sinh hoạt",
+            totalAmount: 470000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000010",
+            providerName: "VNPT Quận 1",
+            serviceType: "Dịch vụ Internet và mạng nội bộ",
+            totalAmount: 1340000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000011",
+            providerName: "Điện lực Hà Nội",
+            serviceType: "Dịch vụ điện tổng hợp",
+            totalAmount: 810000,
+            status: "Chưa thanh toán"
+        },
+        {
+            id: "ORD000012",
+            providerName: "Nước sạch Tây Đô",
+            serviceType: "Dịch vụ cấp nước sinh hoạt",
+            totalAmount: 390000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000013",
+            providerName: "FPT Telecom",
+            serviceType: "Dịch vụ Internet và mạng nội bộ",
+            totalAmount: 1250000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000014",
+            providerName: "EVN HCM",
+            serviceType: "Dịch vụ điện tổng hợp",
+            totalAmount: 950000,
+            status: "Chưa thanh toán"
+        },
+        {
+            id: "ORD000015",
+            providerName: "Công ty TNHH Blue",
+            serviceType: "Dịch vụ cấp nước sinh hoạt",
+            totalAmount: 360000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000016",
+            providerName: "Netviet",
+            serviceType: "Dịch vụ Internet và mạng nội bộ",
+            totalAmount: 990000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000017",
+            providerName: "Điện lực miền Trung",
+            serviceType: "Dịch vụ điện tổng hợp",
+            totalAmount: 770000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000018",
+            providerName: "Công ty Cổ phần Nước Sài Gòn",
+            serviceType: "Dịch vụ cấp nước sinh hoạt",
+            totalAmount: 420000,
+            status: "Đã thanh toán"
+        },
+        {
+            id: "ORD000019",
+            providerName: "Mobifone Internet",
+            serviceType: "Dịch vụ Internet và mạng nội bộ",
+            totalAmount: 1080000,
+            status: "Chưa thanh toán"
+        },
+        {
+            id: "ORD000020",
+            providerName: "EVN Quảng Ninh",
+            serviceType: "Dịch vụ điện tổng hợp",
+            totalAmount: 870000,
+            status: "Đã thanh toán"
+        }
+        ];
+        let invoices = defaultInvoices;
+        const serviceIdSelect = $('#serviceIdSelect');
+        const invoiceStatusSelect = $('#invoiceStatusSelect');
+        const keyInp = $('#keyInp');
+        
+        const load = () => {
+            
+            invoices = defaultInvoices;
+            if (keyInp.val()) {
+                invoices = invoices.filter(e => e.id.includes(keyInp.val()));
+            }
+            if (serviceIdSelect.val()) {
+                invoices = invoices.filter(e => e.serviceType == serviceIdSelect.val());
+            }
+            if (invoiceStatusSelect.val()) {
+                invoices = invoices.filter(e => e.status == invoiceStatusSelect.val());
+            }
+
+            if (keyInp.val()) {
+                $('#keyTag b').text(keyInp.val());
+                $('#keyTag').removeClass('d-none');
+                keyInp.val('');
+            } else {
+                $('#keyTag').addClass('d-none');
+            }
+
+            updateTable();
+        }
+
+        const reset = () => {
+            keyInp.val('');
+            serviceIdSelect.val('');
+            invoiceStatusSelect.val('');
+            invoices = defaultInvoices;
+            updateTable();
+        }
+
+        const resetKey = () => {
+            keyInp.val('');
+            load();
+        }
+
+        const updateTable = () => {
+            const tableBody = $('#list-invoices tbody');
+            tableBody.empty();
+            invoices.forEach((e, i) => {
+                tableBody.append(`
+                    <tr>
+                        <td><input type="checkbox" class="form-check-input"></td>
+                        <td>${i+1}</td>
+                        <td><b>${e.id}</b><i class="fa-regular fa-copy ms-1 text-secondary clickable" title="Sao chép"></i></td>
+                        <td>${e.providerName}</td>
+                        <td>${e.serviceType}</td>
+                        <td>${e.totalAmount.toLocaleString('vn')}</td>
+                        <td class="${ e.status == 'Đã thanh toán'? 'text-success fw-bold':'text-secondary'}">
+                            ${ e.status == 'Đã thanh toán'? '<i class="fa-solid fa-check"></i>':''}
+                            ${e.status}
+                        </td>
+                        <td>
+                            <div class="d-flex ">
+                                ${e.status == 'Chưa thanh toán'? `
+                                    <a href="#" class="link-primary cursor-pointer">Đã thanh toán</a>
+                                    <div class="mx-1">|</div>
+                                `:''}
+                
+                                <a href="invoice-detail.html" class="link-info">Xem chi tiết</a>
+                            </div>
+                        </td>
+                    </tr>
+                `);
+            });
+        }
+
+        $(document).ready(() => {
+            $('#keyTag').addClass('d-none');
+            services.forEach(e => {
+                serviceIdSelect.append(`
+                    <option value="${e.id}">${e.name}</option>
+                `);
+            });
+            updateTable();
+        });
+
+    </script>
+</body>
+</html>
