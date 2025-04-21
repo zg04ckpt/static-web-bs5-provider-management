@@ -13,24 +13,22 @@
     <!-- Start Login Form -->
     <div class="row">
         <div class="col-sm-8 offset-sm-2 col-md-4 offset-md-4">
-            <div class="card card-body mt-5 text-center">
+            <div class="card card-body mt-5">
                 <div class="text-center mb-3">
-                    <h6 class="fw-bold text-secondary">Công ty TNHH Sao Việt</h6>
-                    <h3 class="text-center fw-light">Hệ thống quản lý nhà cung cấp</h3>
-                    <img src="assets/logo.png" alt="" height="200px" width="200px">
-                    <h3>Đăng nhập tài khoản</h3>
+                    <small class="fw-bold text-secondary">Trường Đại học Hà Đông</small>
+                    <h3 class="text-center fw-bold">Hệ thống quản lý nhà cung cấp</h3>
+                    <h4 class="my-3">Đăng nhập</h4>
                 </div>
-                <form action="manager/index.html" method="get">
-                    <div class="form-floating mb-3">
-                        <input type="text" id="userNameInput" class="form-control" placeholder="Nhập tên đăng nhập">
-                        <label for="userNameInput">Tên đăng nhập</label>
+                <form action="index.html" method="get">
+                    <label for="userName">Tên đăng nhập</label>
+                    <input type="text" id="userName" name="userName" class="mt-1 form-control" placeholder="Nhập tên đăng nhập">
+                    
+                    <label for="password" class="mt-3">Mật khẩu</label>
+                    <input type="password" id="password" name="password" class="mt-1 form-control" placeholder="Nhập mật khẩu">
+                    
+                    <div class="d-flex justify-content-center mt-4">
+                        <button class="btn bg-color-1 text-center text-light" type="submit" >Đăng nhập ngay</button>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="passwordInp" placeholder="Nhập mật khẩu">
-                        <label for="passwordInp">Mật khẩu</label>
-                    </div>
-    
-                    <button class="btn bg-color-1 text-light" type="submit" >Đăng nhập ngay</button>
                 </form>
             </div>
         </div>

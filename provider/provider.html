@@ -12,7 +12,7 @@
 
     <!-- Start Sidebar -->
     <div class="d-none d-md-flex flex-column top-0 vh-100 position-fixed flex-shrink-0 p-3 bg-color-1 text-white" style="width: 280px; z-index: 100;">
-        <a href="/" class="d-flex align-items-center text-light mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <a href="/home.html" class="d-flex align-items-center text-light mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="../assets/logo.png" alt="Bootstrap" class="bg-white rounded-pill" width="40" height="40">
             <span class="fs-4 ms-3">Quản lý NCC</span>
         </a>
@@ -409,10 +409,10 @@
         }
 
         const updateTable = () => {
-            const $tbody = $('#list-providers tbody');
-            $tbody.empty();
+            const tbody = $('#list-providers tbody');
+            tbody.empty();
             list.forEach((e, i) => {
-                $tbody.append(`
+                tbody.append(`
                     <tr>
                         <td><input type="checkbox" class="form-check-input"></td>
                         <td>${i+1}</td>

@@ -14,13 +14,13 @@
         <div class="col-lg-10 offset-1 mt-5">
             <div class="card card-body px-4">
                 <h3 class="mb-4">Đăng kí thông tin</h3>
-                <form class="">
+                <form id="form">
                     <div class="row g-3">
-                        <div class="col-6">
+                        <div class="col-lg-6">
                             <label for="lastName">Họ</label>
                             <input id="lastName" name="lastName" type="text" class="form-control mt-1" placeholder="Nhập họ của bạn">
                         </div>
-                        <div class="col-6">
+                        <div class="col-lg-6">
                             <label for="firstName">Tên</label>
                             <input id="firstName" name="firstName" type="text" class="form-control mt-1" placeholder="Nhập tên của bạn">
                         </div>
@@ -32,26 +32,26 @@
                             <label for="email">Email</label>
                             <input id="email" name="email" type="text" class="form-control mt-1" placeholder="Nhập email của bạn">
                         </div>
-                        <div class="col-4">
+                        <div class="col-lg-4">
                             <div class="d-flex align-items-center">
                                 <label for="dob" class="flex-shrink-0">Ngày sinh</label>
                                 <input type="date" name="dob" id="dob" class="form-control ms-2 w-auto">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-lg-4">
                             <div class="d-flex align-items-center h-100">
                                 <label for="" class="flex-shrink-0 ">Giới tính:</label>
                                 <div class="form-check-inline ms-2">
-                                    <input type="radio" name="gender" class="form-check-input ms-2">
-                                    <label for="" class="form-check-label">Nam</label>
-                                    <input type="radio" name="gender" class="form-check-input">
-                                    <label for="" class="form-check-label">Nữ</label>
-                                    <input type="radio" name="gender" class="form-check-input">
-                                    <label for="" class="form-check-label">Khác</label>
+                                    <input type="radio" name="gender" class="form-check-input ms-2" value="male">
+                                    <label for="gender" class="form-check-label">Nam</label>
+                                    <input type="radio" name="gender" class="form-check-input" value="female">
+                                    <label for="gender" class="form-check-label">Nữ</label>
+                                    <input type="radio" name="gender" class="form-check-input" value="other">
+                                    <label for="gender" class="form-check-label">Khác</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-lg-4">
                             <div class="d-flex align-items-center">
                                 <label for="city" class="flex-shrink-0">Thành phố</label>
                                 <select name="city" id="city" class="form-select w-auto ms-2">
@@ -63,29 +63,31 @@
                             <div class="d-flex align-items-center h-100">
                                 <label class="flex-shrink-0 ">Sở thích:</label>
                                 <div class="form-check-inline ms-2">
-                                    <input type="checkbox" class="form-check-input ">
+                                    <input type="checkbox" class="form-check-input" name="likeReadBook">
                                     <label for="">Đọc sách</label>
-                                    <input type="checkbox" class="form-check-input">
+                                    <input type="checkbox" class="form-check-input" name="likeListenMusic">
                                     <label for="">Nghe nhạc</label>
-                                    <input type="checkbox" class="form-check-input">
+                                    <input type="checkbox" class="form-check-input" name="likeWatchFilm">
                                     <label for="">Xem phim</label>
-                                    <input type="checkbox" class="form-check-input">
+                                    <input type="checkbox" class="form-check-input" name="likeFootball">
                                     <label for="">Bóng đá</label>
-                                    <input type="checkbox" class="form-check-input">
+                                    <input type="checkbox" class="form-check-input" name="likeVolleyball">
                                     <label for="">Bóng chuyền</label>
-                                    <input type="checkbox" class="form-check-input">
+                                    <input type="checkbox" class="form-check-input" name="likeBadminton">
                                     <label for="">Cầu lông</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-lg-4">
                             <label for="desc" class="flex-shrink-0">Mô tả bản thân</label>
                             <textarea name="desc" id="desc" class="form-control mt-2"></textarea>
                         </div>
                     </div>
                     <div class="d-flex mt-2">
-                        <button class="btn btn-primary">Đăng kí</button>
+                        <button class="btn btn-primary" type="submit">Đăng kí</button>
                         <button class="btn btn-primary ms-2">Làm lại</button>
+                        <div class="flex-fill"></div>
+                        <button id="updateBtn" class="btn btn-outline-dark">Chỉnh sửa</button>
                     </div>
                 </form>
             </div>
@@ -98,5 +100,164 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
+    <script>
+        const provinceData = [
+            { "key": "ha_noi", "name": "Hà Nội" },
+            { "key": "ho_chi_minh", "name": "Hồ Chí Minh" },
+            { "key": "hai_phong", "name": "Hải Phòng" },
+            { "key": "da_nang", "name": "Đà Nẵng" },
+            { "key": "can_tho", "name": "Cần Thơ" },
+            { "key": "an_giang", "name": "An Giang" },
+            { "key": "ba_ria_vung_tau", "name": "Bà Rịa - Vũng Tàu" },
+            { "key": "bac_giang", "name": "Bắc Giang" },
+            { "key": "bac_kan", "name": "Bắc Kạn" },
+            { "key": "bac_lieu", "name": "Bạc Liêu" },
+            { "key": "bac_ninh", "name": "Bắc Ninh" },
+            { "key": "ben_tre", "name": "Bến Tre" },
+            { "key": "binh_dinh", "name": "Bình Định" },
+            { "key": "binh_duong", "name": "Bình Dương" },
+            { "key": "binh_phuoc", "name": "Bình Phước" },
+            { "key": "binh_thuan", "name": "Bình Thuận" },
+            { "key": "ca_mau", "name": "Cà Mau" },
+            { "key": "cao_bang", "name": "Cao Bằng" },
+            { "key": "dak_lak", "name": "Đắk Lắk" },
+            { "key": "dak_nong", "name": "Đắk Nông" },
+            { "key": "dien_bien", "name": "Điện Biên" },
+            { "key": "dong_nai", "name": "Đồng Nai" },
+            { "key": "dong_thap", "name": "Đồng Tháp" },
+            { "key": "gia_lai", "name": "Gia Lai" },
+            { "key": "ha_giang", "name": "Hà Giang" },
+            { "key": "ha_nam", "name": "Hà Nam" },
+            { "key": "ha_tinh", "name": "Hà Tĩnh" },
+            { "key": "hai_duong", "name": "Hải Dương" },
+            { "key": "hau_giang", "name": "Hậu Giang" },
+            { "key": "hoa_binh", "name": "Hòa Bình" },
+            { "key": "hung_yen", "name": "Hưng Yên" },
+            { "key": "khanh_hoa", "name": "Khánh Hòa" },
+            { "key": "kien_giang", "name": "Kiên Giang" },
+            { "key": "kon_tum", "name": "Kon Tum" },
+            { "key": "lai_chau", "name": "Lai Châu" },
+            { "key": "lam_dong", "name": "Lâm Đồng" },
+            { "key": "lang_son", "name": "Lạng Sơn" },
+            { "key": "lao_cai", "name": "Lào Cai" },
+            { "key": "long_an", "name": "Long An" },
+            { "key": "nam_dinh", "name": "Nam Định" },
+            { "key": "nghe_an", "name": "Nghệ An" },
+            { "key": "ninh_binh", "name": "Ninh Bình" },
+            { "key": "ninh_thuan", "name": "Ninh Thuận" },
+            { "key": "phu_tho", "name": "Phú Thọ" },
+            { "key": "phu_yen", "name": "Phú Yên" },
+            { "key": "quang_binh", "name": "Quảng Bình" },
+            { "key": "quang_nam", "name": "Quảng Nam" },
+            { "key": "quang_ngai", "name": "Quảng Ngãi" },
+            { "key": "quang_ninh", "name": "Quảng Ninh" },
+            { "key": "quang_tri", "name": "Quảng Trị" },
+            { "key": "soc_trang", "name": "Sóc Trăng" },
+            { "key": "son_la", "name": "Sơn La" },
+            { "key": "tay_ninh", "name": "Tây Ninh" },
+            { "key": "thai_binh", "name": "Thái Bình" },
+            { "key": "thai_nguyen", "name": "Thái Nguyên" },
+            { "key": "thanh_hoa", "name": "Thanh Hóa" },
+            { "key": "thua_thien_hue", "name": "Thừa Thiên Huế" },
+            { "key": "tien_giang", "name": "Tiền Giang" },
+            { "key": "tra_vinh", "name": "Trà Vinh" },
+            { "key": "tuyen_quang", "name": "Tuyên Quang" },
+            { "key": "vinh_long", "name": "Vĩnh Long" },
+            { "key": "vinh_phuc", "name": "Vĩnh Phúc" },
+            { "key": "yen_bai", "name": "Yên Bái" }
+        ];
+        const formDataKey = 'testFormDataKey';
+
+        $('#form').on('submit', e => {
+            e.preventDefault();
+            console.log($('#form'));
+            const formData = new FormData($('#form')[0]);
+            const data = {
+                lastName: formData.get('lastName') ?? '',
+                firstName: formData.get('firstName') ?? '',
+                password: formData.get('password') ?? '',
+                email: formData.get('email') ?? '',
+                dob: formData.get('dob') ?? '',
+                gender: formData.get('gender') ?? '',
+                city: formData.get('city') ?? '',
+                likeReadBook: formData.get('likeReadBook') ?? '',
+                likeListenMusic: formData.get('likeListenMusic') ?? '',
+                likeWatchFilm: formData.get('likeWatchFilm') ?? '',
+                likeFootball: formData.get('likeFootball') ?? '',
+                likeVolleyball: formData.get('likeVolleyball') ?? '',
+                likeBadminton: formData.get('likeBadminton') ?? '',
+                desc: formData.get('desc') ?? '',
+            };            
+            
+            if (data.lastName == '') {
+                alert('Vui lòng nhập họ đệm.')
+                return;
+            }
+            
+            if (data.firstName == '') {
+                alert('Vui lòng nhập tên.')
+                return;
+            }
+            
+            if (data.password == '') {
+                alert('Vui lòng nhập mật khẩu.')
+                return;
+            }
+            
+            if (data.email == '') {
+                alert('Vui lòng nhập địa chỉ email.')
+                return;
+            }
+            
+            if (data.dob == '') {
+                alert('Vui lòng chọn ngày sinh.')
+                return;
+            }
+
+            if (data.gender == '') {
+                alert('Vui lòng chọn giới tính.')
+                return;
+            }
+
+            if (data.city == '') {
+                alert('Vui lòng chọn tỉnh/thành phố.')
+                return;
+            }
+
+            localStorage.setItem(formDataKey, JSON.stringify(data));
+            alert('Lưu thông tin thành công.');
+        });
+
+        $(document).ready(() => {
+            provinceData.forEach(e => {
+                $('#city').append(`
+                    <option value="${e.key}">${e.name}</option>
+                `);
+            });
+            $('#updateBtn').on('click', e => {
+                e.preventDefault();
+                const rawData = localStorage.getItem(formDataKey);
+                
+                if (rawData) {
+                    const formData = new FormData($('#form')[0]);
+                    const data = JSON.parse(rawData);
+                    console.log(data);
+                    $('#form [name="lastName"]').val(data.lastName);
+                    $('#form [name="firstName"]').val(data.firstName);
+                    $('#form [name="password"]').val(data.password);
+                    $('#form [name="email"]').val(data.email);
+                    $('#form [name="dob"]').val(data.dob);
+                    $('#form [name="desc"]').val(data.desc);
+                    $('#form [name="city"]').val(data.city);
+                    $('#form [name="gender"][value="' + data.gender + '"]').prop('checked', true);
+                    $('#form [name="likeReadBook"]').prop('checked', data.likeReadBook);
+                    $('#form [name="likeListenMusic"]').prop('checked', data.likeListenMusic);
+                    $('#form [name="likeWatchFilm"]').prop('checked', data.likeWatchFilm);
+                    $('#form [name="likeFootball"]').prop('checked', data.likeFootball);
+                    $('#form [name="likeBadminton"]').prop('checked', data.likeBadminton);
+                } 
+            }); 
+        });
+    </script>
 </body>
 </html>

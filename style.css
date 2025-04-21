@@ -9,7 +9,7 @@
 }
 
 * {
-    font-family: var(--main-font) !important;
+    font-family: var(--main-font);
 }
 
 body {
@@ -184,4 +184,35 @@ body {
 /* Provider detail */
 .provider-detail i {
     color: var(--lv3-color) !important;
+}
+
+/* Home */
+.nav-item:hover {
+    background-color: rgba(128, 128, 128, 0.388);
+}
+
+.feature-item {
+    border: 2px solid transparent;
+}
+
+.feature-item:hover {
+    border-radius: 10px;
+    border: 2px solid var(--lv2-color);
+    box-shadow: 0px 0px 5px var(--lv3-color);
+    cursor: pointer;
+    background-color: white;
+    color: var(--lv1-color) !important;
+    transform: scale(1.05);
+    transition: 1s ease;
+}
+
+.top-provider:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgba(99, 98, 98, 0.476);
+    transition: 0.6s ease;
+}
+
+.provider-item:hover {
+    border: 1px solid var(--lv2-color);
+    cursor: pointer;
 }
